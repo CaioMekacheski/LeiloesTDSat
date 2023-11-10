@@ -71,6 +71,20 @@ public class ProdutosDAO
         return listagem;
     }
     
+    public void venderProduto(int i)
+    {
+        conn = new conectaDAO().connectDB();
+        try 
+        {
+            prep = conn.prepareStatement("update Produtos set status = ? where id = ?");
+            prep.setString(1, "Vendido");
+            prep.setInt(2, i);
+            prep.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     
     
         
