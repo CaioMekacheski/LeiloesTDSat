@@ -23,7 +23,6 @@ public class conectaDAO {
     {
         
         Connection conn = null;
-        System.out.println(conn);
         
         try 
         {
@@ -40,7 +39,7 @@ public class conectaDAO {
             Logger.getLogger(conectaDAO.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(null, "Erro jdbc driver");
         }
-        System.out.println(conn);
+        
         return conn;
     }
     

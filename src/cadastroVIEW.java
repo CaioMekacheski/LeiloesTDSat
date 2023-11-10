@@ -159,7 +159,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
             
             try
             {
-                produto.setValor(Integer.parseInt(valor));
+                produto.setValor(Double.parseDouble(valor));
                 produto.setStatus(status);
                 ProdutosDAO produtodao = new ProdutosDAO();
                 produtodao.cadastrarProduto(produto);
@@ -169,18 +169,12 @@ public class cadastroVIEW extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Digite um número no campo valor");
                 cadastroValor.setText("");
                 cadastroValor.requestFocus();
-            }
-            
-            
-        }
-        
-        
-        
-        
-        
+            }     
+        }       
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed
+        
         listagemVIEW listagem = new listagemVIEW(); 
         listagem.setVisible(true);
     }//GEN-LAST:event_btnProdutosActionPerformed
