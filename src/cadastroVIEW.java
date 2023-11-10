@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -142,16 +145,38 @@ public class cadastroVIEW extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         
         ProdutosDTO produto = new ProdutosDTO();
-        String nome = cadastroNome.getText();
-        String valor = cadastroValor.getText();
-        String status = "A Venda";
-        produto.setNome(nome);
-        produto.setValor(Integer.parseInt(valor));
-        produto.setStatus(status);
+        
+        if(cadastroNome.getText().equals("") || cadastroValor.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+        }
+        else
+        {
+            String nome = cadastroNome.getText();
+            String valor = cadastroValor.getText();
+            String status = "A Venda";
+            produto.setNome(nome);
+            
+            try
+            {
+                produto.setValor(Integer.parseInt(valor));
+                produto.setStatus(status);
+                ProdutosDAO produtodao = new ProdutosDAO();
+                produtodao.cadastrarProduto(produto);
+            }
+            catch(NumberFormatException ex)
+            {
+                JOptionPane.showMessageDialog(null, "Digite um número no campo valor");
+                cadastroValor.setText("");
+                cadastroValor.requestFocus();
+            }
+            
+            
+        }
         
         
-        ProdutosDAO produtodao = new ProdutosDAO();
-        produtodao.cadastrarProduto(produto);
+        
+        
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
