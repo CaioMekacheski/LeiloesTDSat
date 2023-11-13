@@ -67,6 +67,7 @@ public class ProdutosDAO
         catch (SQLException ex) 
         {
             Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao acessar dados");
         }
         return listagem;
     }
@@ -80,8 +81,11 @@ public class ProdutosDAO
             prep.setString(1, "Vendido");
             prep.setInt(2, i);
             prep.executeUpdate();
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(ProdutosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar dados");
         }
     }
     
