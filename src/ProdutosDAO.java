@@ -50,7 +50,8 @@ public class ProdutosDAO
         conn = new conectaDAO().connectDB();
         try 
         { 
-            prep = conn.prepareStatement("select * from Produtos where status = Vendido");
+            prep = conn.prepareStatement("select * from Produtos where status = ?");
+            prep.setString(1, "Vendido");
             resultset = prep.executeQuery();
             
             while(resultset.next())
